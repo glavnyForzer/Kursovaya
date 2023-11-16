@@ -18,9 +18,9 @@ namespace Kursovaya
     /// <summary>
     /// Логика взаимодействия для statusZayavki.xaml
     /// </summary>
-    public partial class statusZayavki : Page
+    public partial class StatusZayavki : Page
     {
-        public statusZayavki()
+        public StatusZayavki()
         {
             InitializeComponent();
         }

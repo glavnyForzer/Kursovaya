@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Kursovaya.classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
+
 namespace Kursovaya
 {
     /// <summary>
@@ -21,20 +23,29 @@ namespace Kursovaya
     public partial class Zayavki : Page
     {
         private Frame _frame;
+        private DatabaseService _dbService;
 
         public Zayavki(Frame frame)
         {
-            InitializeComponent();
-            _frame = frame;
+                InitializeComponent();
+                _frame = frame;
+                
         }
 
         public Zayavki()
         {
+            InitializeComponent();
+            _dbService = new DatabaseService();
+            LoadJournal();
         }
-
+        private void LoadJournal()
+        {
+            var Journal = _dbService.GetJournals();
+            JournalDataGrid.ItemsSource = Journal;
+        }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new statusZayavki());
+            NavigationService.Navigate(new StatusZayavki());
         }
 
         private void Btn_Jurnal_Click(object sender, RoutedEventArgs e)
@@ -49,13 +60,28 @@ namespace Kursovaya
 
         private void Btn_Spisok_Click(object sender, RoutedEventArgs e)
         {
-            NavigationService.Navigate(new Spisok());
+            if (_frame != null && _frame.NavigationService != null)
+            {
+                _frame.NavigationService.Navigate(new Spisok(_frame));
+            }
         }
 
         private void MakeApplication_Click(object sender, RoutedEventArgs e)
         {
-            addApplication addAppWindow = new addApplication(this);
-            addAppWindow.ShowDialog(); // Используйте ShowDialog() вместо Navigate
+            new addApplication().ShowDialog();
+            JournalDataGrid.ItemsSource = new DatabaseService().GetJournals();
+            /*var addaddApplicationPage = new addApplication();
+            if (addaddApplicationPage.ShowDialog() == true)
+            {
+                Journal newJournal = addaddApplicationPage.Journal;
+                _dbService.AddJournal(newJournal);
+                LoadJournals();
+            }*/
+        }
+
+        private void JournalsDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

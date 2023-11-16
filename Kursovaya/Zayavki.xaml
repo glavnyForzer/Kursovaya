@@ -40,11 +40,13 @@
                 Height="60"
                 Background="White"
                 FontSize="20"                
-                BorderThickness="1,1,0,1" Click="Btn_Jurnal_Click" ><Button.Resources>
+                BorderThickness="1,1,0,1" Click="Btn_Jurnal_Click" >
+                <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="30,0,0,30"></Setter>
                     </Style>
-                </Button.Resources></Button>
+                </Button.Resources>
+            </Button>
             <Button
                 Name="Btn_Complete"
                 Content="Завершённые"
@@ -67,14 +69,18 @@
                     </Style>
                 </Button.Resources>
             </Button>
-        </WrapPanel>
-        <WrapPanel
-            Grid.Row="2"
-             VerticalAlignment="Center"
-             HorizontalAlignment="Center">
-            <Label
-                Content="пизда"
-                FontSize="50"></Label>
+            <DataGrid x:Name="JournalDataGrid" Grid.Column="1" AutoGenerateColumns="False" HeadersVisibility="Column" Background="DarkGray" SelectionChanged="JournalsDataGrid_SelectionChanged">
+                <!-- Колонки для DataGrid, где будут отображаться данные из базы данных -->
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="ID Заявки " Binding="{Binding Id_Zayavki}"/>
+                    <DataGridTextColumn Header="Заказчик" Binding="{Binding Owner}" />
+                    <DataGridTextColumn Header="Статус заявки" Binding="{Binding Status}" />
+                    <DataGridTextColumn Header="Адрес заказчика" Binding="{Binding Adress}" />
+                    <DataGridTextColumn Header="Количество" Binding="{Binding Weight}" />
+                    <DataGridTextColumn Header="Грузовик" Binding="{Binding Truck}" />
+                    <DataGridTextColumn Header="Дата отгрузки" Binding="{Binding Date_Otgruzki}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </WrapPanel>
         <WrapPanel
             Grid.Row="3"

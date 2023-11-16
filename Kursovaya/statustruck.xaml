@@ -65,10 +65,6 @@
                 Background="#00FFFFFF"
                 BorderThickness="0,0,0,1"
                 BorderBrush="Black">
-                <ComboBoxItem Content="Свободен" />
-                <ComboBoxItem Content="В пути" />
-                <ComboBoxItem Content="Возвращается" />
-                <ComboBoxItem Content="Сервис" />
             </ComboBox>
         </WrapPanel>
         <StackPanel

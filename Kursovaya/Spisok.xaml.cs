@@ -1,4 +1,5 @@
 ﻿using System;
+using Kursovaya;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Kursovaya.classes;
 
 namespace Kursovaya
 {
@@ -20,11 +22,24 @@ namespace Kursovaya
     /// </summary>
     public partial class Spisok : Page
     {
+        private Frame _frame;
+        private DatabaseService _dbService;
+        public Spisok(Frame frame)
+        {
+            InitializeComponent();
+            _frame = frame;
+        }
         public Spisok()
         {
             InitializeComponent();
+            _dbService = new DatabaseService();
+            LoadTrucks();
         }
-
+        private void LoadTrucks()
+        {
+            var trucks = _dbService.GetTruck();
+            TrucksDataGrid.ItemsSource = trucks;
+        }
         private void Btn_Jurnal_Click(object sender, RoutedEventArgs e)
         {
             NavigationService.Navigate(new Zayavki());
@@ -42,10 +57,16 @@ namespace Kursovaya
 
         private void AddTruck_Click(object sender, RoutedEventArgs e)
         {
-
+            new AddTruckWindow().ShowDialog();
+            TrucksDataGrid.ItemsSource = new DatabaseService().GetTruck();
         }
 
         private void statusTrucks_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void TrucksDataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
         }

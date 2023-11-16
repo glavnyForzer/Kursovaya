@@ -69,20 +69,22 @@
                     </Style>
                 </Button.Resources>
             </Button>
-        </WrapPanel>
-        <WrapPanel
-            Grid.Row="2"
-             VerticalAlignment="Center"
-                HorizontalAlignment="Center">
-            <Label
-                Content="Жопа"
-                FontSize="50"></Label>
+            <DataGrid x:Name="TrucksDataGrid" Grid.Column="1" AutoGenerateColumns="False" HeadersVisibility="Column" Background="DarkGray" SelectionChanged="TrucksDataGrid_SelectionChanged">
+                <!-- Колонки для DataGrid, где будут отображаться данные из базы данных -->
+                <DataGrid.Columns >
+                    <DataGridTextColumn Header="ID Грузовика " Binding="{Binding Id_Truck}"/>
+                    <DataGridTextColumn Header="Гос номер" Binding="{Binding Number}" />
+                    <DataGridTextColumn Header="ФИО" Binding="{Binding FIO}" />
+                    <DataGridTextColumn Header="Статус" Binding="{Binding Status}" />
+                    <DataGridTextColumn Header="Марка Модель" Binding="{Binding Car}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </WrapPanel>
         <WrapPanel
             Grid.Row="3"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Center" Margin="0,0,0,0">
-            <Button x:Name="addApplication" 
+            <Button x:Name="addTrucks" 
                     Width="297" Height="79" 
                     BorderThickness="0,0,0,0" 
                     Background="Transparent" 

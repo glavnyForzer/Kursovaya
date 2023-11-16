@@ -46,7 +46,7 @@
             FlowDirection="LeftToRight">
             <TextBox
                 Text="Заказчик"
-                x:Name="Owner" Width="320" Height="30"
+                x:Name="Owners" Width="320" Height="30"
                 GotFocus="OnTextBoxGotFocus"
                 Background="#00FFFFFF"
                 VerticalAlignment="Bottom"
@@ -59,7 +59,7 @@
                 BorderBrush="Black"/>
             <TextBox
                 Text="Наименование груза"
-                x:Name="cargo" Width="320" Height="30"
+                x:Name="cargos" Width="320" Height="30"
                 GotFocus="OnTextBoxGotFocus"
                 Background="#00FFFFFF"
                 VerticalAlignment="Bottom"
@@ -68,25 +68,22 @@
                 Margin="30,0,30,0"
                 TextAlignment="Center"
                 FontSize="22" 
-                TextChanged="Owner_TextChanged" 
+                TextChanged="Owner_TextChanged"                                                     
                 BorderBrush="Black"/>
-            <TextBox
-                Text="Автомобиль"
-                x:Name="truck" Width="320" Height="30"
-                GotFocus="OnTextBoxGotFocus"
-                Background="#00FFFFFF"
-                VerticalAlignment="Bottom"
-                HorizontalAlignment="Left"
-                BorderThickness="0,0,0,1"
+            <ComboBox 
+                SelectionChanged="ComboBoxTruck_SelectionChanged"
+                x:Name="upTruck"
+                Width="320"
                 Margin="30,0,30,0"
-                TextAlignment="Center"
-                FontSize="22" 
-                TextChanged="Owner_TextChanged" 
-                BorderBrush="Black"/>
+                Background="#00FFFFFF"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black"
+                SelectedItem="{Binding StatusTrucks.Status2}" DisplayMemberPath="Status2">
+            </ComboBox>
         </WrapPanel>
         <WrapPanel
             Grid.Row="2"
-            Margin="0 50 0 0"
+            Margin="0 3 0 0"
             Orientation="Horizontal"
             HorizontalAlignment="Center"
             VerticalAlignment="Top" FlowDirection="LeftToRight">
@@ -145,13 +142,14 @@
                     <TextBlock 
                         Text="Отмена" 
                         TextAlignment="Left" 
-                        FontSize="50"/>     
+                        FontSize="50"/>
                 </StackPanel>
             </Button>
             <Button
+                x:Name="makeapp"
                 Width="289" Height="79" 
                 BorderThickness="0,0,0,0" 
-                Background="Transparent" >
+                Background="Transparent" Click="Button_Click" >
                 <StackPanel 
                     Orientation="Horizontal" 
                     FlowDirection="LeftToRight">
@@ -167,6 +165,24 @@
                         Stretch="Fill"/>
                 </StackPanel>
             </Button>
+        </WrapPanel>
+        <WrapPanel
+            Grid.Row="2"
+            Margin="0 40 0 0"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" FlowDirection="LeftToRight">
+            <ComboBox 
+                SelectionChanged="ComboBoxStatus_SelectionChanged"
+                x:Name="Statuz2"
+                FontSize="20"
+                Width="320"
+                Margin="120,40,120,0"
+                Background="#00FFFFFF"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black" 
+                SelectedItem="{Binding StatusZayavki.Status1}" DisplayMemberPath="Status1">
+            </ComboBox>
         </WrapPanel>
     </Grid>
 </Window>

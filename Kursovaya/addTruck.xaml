@@ -1,12 +1,145 @@
-﻿<Window x:Class="Kursovaya.addTruck"
+﻿<Window x:Class="Kursovaya.AddTruckWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Kursovaya"
-        mc:Ignorable="d"
-        Title="addTruck" Height="450" Width="800">
-    <Grid>
-        
+        Height="720" Width="1280"   
+        Title="WorkZone" Background="#D9D9D9">
+
+    <Grid x:Name="addTruck" FlowDirection="RightToLeft">
+        <Grid.RowDefinitions>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel
+            Grid.Column="1"
+            Grid.ColumnSpan="1">
+            <Border
+                Background="#CBCACA"
+                Width="550"
+                Height="88"
+                CornerRadius="45"
+                Margin="0,40,0,0"
+                BorderThickness="1"
+                BorderBrush="Black">
+                <TextBlock Text="IZI LOGISTIK" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="30"/>
+            </Border>
+        </StackPanel>
+        <StackPanel
+            Grid.Row="1"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center">
+            <Label
+                Content="Создание грузовика"
+                FontSize="40">
+            </Label>
+        </StackPanel>
+        <WrapPanel 
+            Grid.Row="1"
+            Margin="0 105 0 0"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top"
+            FlowDirection="LeftToRight">
+            <TextBox
+                Text="Гос.Номер"
+                x:Name="NumberPlate" Width="320" Height="30"
+                GotFocus="OnTextBoxGotFocus"
+                Background="#00FFFFFF"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Center"
+                BorderThickness="0,0,0,1"
+                Margin="30,0,30,0"
+                TextAlignment="Center"
+                FontSize="22" 
+                TextChanged="Owner_TextChanged"  
+                BorderBrush="Black"/>
+            <TextBox
+                Text="ФИО"
+                x:Name="Initials" Width="320" Height="30"
+                GotFocus="OnTextBoxGotFocus"
+                Background="#00FFFFFF"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                BorderThickness="0,0,0,1"
+                Margin="30,0,30,0"
+                TextAlignment="Center"
+                FontSize="22" 
+                TextChanged="Owner_TextChanged" 
+                BorderBrush="Black"/>
+        </WrapPanel>
+        <WrapPanel
+            Grid.Row="2"
+            Margin="0 50 0 0"
+            Orientation="Horizontal"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top" FlowDirection="LeftToRight">
+            <TextBox
+                Text="Марка, Модель"
+                x:Name="BrandModel" Width="320" Height="30"
+                GotFocus="OnTextBoxGotFocus"
+                Background="#00FFFFFF"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Left"
+                BorderThickness="0,0,0,1"
+                Margin="30,0,30,0"
+                TextAlignment="Center"
+                FontSize="22" 
+                TextChanged="Owner_TextChanged" 
+                BorderBrush="Black"/>
+            <ComboBox 
+                SelectionChanged="ComboBoxStatus_SelectionChanged"
+                x:Name="StatusTrucks"
+                FontSize="20"
+                Width="320"
+                Margin="120,40,120,0"
+                Background="#00FFFFFF"
+                BorderThickness="0,0,0,1"
+                BorderBrush="Black" 
+                SelectedItem="{Binding StatusTruck.Status2}" DisplayMemberPath="Status2">
+                </ComboBox>
+        </WrapPanel>
+        <WrapPanel
+            Grid.Row="3"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center">
+            <Button 
+                Width="289" Height="79" 
+                BorderThickness="0,0,0,0" 
+                Background="Transparent" 
+                Click="CancelButton_Click">
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    FlowDirection="LeftToRight">
+                    <TextBlock 
+                        Text="Отмена" 
+                        TextAlignment="Left" 
+                        FontSize="50"/>
+                </StackPanel>
+            </Button>
+            <Button
+                Width="289" Height="79" 
+                BorderThickness="0,0,0,0" 
+                Background="Transparent" Click="Button_Click" >
+                <StackPanel 
+                    Orientation="Horizontal" 
+                    FlowDirection="LeftToRight">
+                    <TextBlock 
+                        Text="Создать" 
+                        TextAlignment="Left" 
+                        FontSize="50"/>
+                    <Path 
+                        Data="M10,30 L20,40 L40,10" 
+                        Stroke="Black" 
+                        StrokeThickness="2" 
+                        Height="55"
+                        Stretch="Fill"/>
+                </StackPanel>
+            </Button>
+        </WrapPanel>
     </Grid>
 </Window>
+

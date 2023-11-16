@@ -194,13 +194,15 @@
     </Compile>
     <Compile Include="DatabaseService.cs" />
     <Compile Include="Journal.cs" />
-    <Compile Include="ListTruck.cs" />
+    <Compile Include="Trucks.cs" />
     <Compile Include="Spisok.xaml.cs">
       <DependentUpon>Spisok.xaml</DependentUpon>
     </Compile>
     <Compile Include="statustruck.xaml.cs">
       <DependentUpon>statustruck.xaml</DependentUpon>
     </Compile>
+    <Compile Include="StatusTrucks.cs" />
+    <Compile Include="StatusZayavki.cs" />
     <Compile Include="statusZayavki.xaml.cs">
       <DependentUpon>statusZayavki.xaml</DependentUpon>
     </Compile>
@@ -232,6 +234,9 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+    <None Include="iziLogistik.db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
