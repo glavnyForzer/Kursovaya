@@ -14,7 +14,7 @@ namespace Kursovaya
     {
         public DbSet <Journal> Journal { get; set; }
         public DbSet<Trucks> Trucks { get; set; }
-        public DbSet<StatusZayavki> StatusZayavki { get; set; }
+        //public DbSet<StatusZayavki> StatusZayavki { get; set; }
         public DbSet<StatusTrucks> StatusTrucks { get; set; }
 
         public ApplicationContext() : base("DefaultConnection")

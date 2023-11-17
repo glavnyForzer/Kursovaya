@@ -11,46 +11,20 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
-using Kursovaya.classes;
 
 namespace Kursovaya
 {
-    public partial class AddTruckWindow : Window
+    /// <summary>
+    /// Логика взаимодействия для addCar.xaml
+    /// </summary>
+    public partial class addCar : Window
     {
-        /* private Page _parentPage;
-         private Frame _parentFrame;
-
-         ApplicationContext db;
-
-         public Trucks Trucks { get; private set; }  
-
-         public AddTruckWindow(Page parentPage)
-         {
-             InitializeComponent();
-             _parentPage = parentPage;
-         }
-
-         public AddTruckWindow(Frame parentFrame)
-         {
-             InitializeComponent();
-             _parentFrame = parentFrame;
-         }*/
         private ApplicationContext db = new ApplicationContext();
-        private Trucks  newTrucks;
-        /*public AddTruckWindow()
+        private Trucks newTrucks;
+        public addCar()
         {
             InitializeComponent();
-            Statuses.ItemsSource = db.StatusTrucks.ToList();
-        }*/
-       public AddTruckWindow()
-        {
-            InitializeComponent();
-            StatusTrucks.ItemsSource = db.StatusTrucks.ToList();
-        }
-
-        private void Owner_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            // Ваш код обработки изменения текста
+            statustrucks.ItemsSource = db.StatusTrucks.ToList();
         }
 
         private void OnTextBoxGotFocus(object sender, RoutedEventArgs e)
@@ -59,14 +33,15 @@ namespace Kursovaya
             textBox.Text = string.Empty;
             textBox.GotFocus -= OnTextBoxGotFocus;
         }
+
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             string number = NumberPlate.Text;
             string fio = Initials.Text;
-            int status = StatusTrucks.SelectedIndex;
+            int status = statustrucks.SelectedIndex;
             string car = BrandModel.Text;
 
-            if (NumberPlate.Text != "" && Initials.Text != "" && StatusTrucks.SelectedItem != null && BrandModel.Text != "")
+            if (NumberPlate.Text != "" && Initials.Text != "" && statustrucks.SelectedItem != null && BrandModel.Text != "")
             {
                 newTrucks = new Trucks()
                 {
@@ -75,7 +50,7 @@ namespace Kursovaya
                     FIO = fio,
                     Status = status,
                     Car = car,
-                    
+
                 };
 
                 db.Trucks.Add(newTrucks);
@@ -87,14 +62,19 @@ namespace Kursovaya
                 MessageBox.Show("Заполните все данные");
             }
         }
+
         private void CancelButton_Click(object sender, RoutedEventArgs e)
         {
-            this.DialogResult = false; // Закройте текущее окно после возврата на предыдущую страницу
+            this.DialogResult = false;
+        }
+
+        private void Owner_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
         }
 
         private void ComboBoxStatus_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-
         }
     }
 }

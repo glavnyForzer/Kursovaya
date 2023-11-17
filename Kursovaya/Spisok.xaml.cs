@@ -57,7 +57,7 @@ namespace Kursovaya
 
         private void AddTruck_Click(object sender, RoutedEventArgs e)
         {
-            new AddTruckWindow().ShowDialog();
+            new addCar().ShowDialog();
             TrucksDataGrid.ItemsSource = new DatabaseService().GetTruck();
         }
 

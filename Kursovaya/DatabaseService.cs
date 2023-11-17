@@ -56,7 +56,7 @@ namespace Kursovaya
             {
                 connection.Open();
 
-                string query = "SELECT * FROM trucks";
+                string query = "SELECT * FROM Trucks";
 
                 SQLiteCommand command = new SQLiteCommand(query, connection);
 
@@ -78,7 +78,7 @@ namespace Kursovaya
             }
             return trucks;
         }
-        public List<StatusTrucks> GetStatusTruckss() 
+        public List<StatusTrucks> GetStatusTrucks()
         {
             List<StatusTrucks> statusTrucks = new List<StatusTrucks>();
 
@@ -104,7 +104,7 @@ namespace Kursovaya
                 return statusTrucks;
             }
         }
-        public List<StatusZayavki> GetStatusZayavkis() 
+        /*public List<StatusZayavki> GetStatusZayavkis() 
         {
             List<StatusZayavki> statusZayavki = new List<StatusZayavki>();
 
@@ -129,7 +129,7 @@ namespace Kursovaya
                 }
                 return statusZayavki;
             }
-        }
+        }*/
 
         public bool AddJournal(Journal journal)
         {
@@ -159,7 +159,7 @@ namespace Kursovaya
             {
                 connection.Open();
 
-                string query = "INSERT INTO truck (number, fio, status, car) VALUES (@number, @fio, @status, @car)";
+                string query = "INSERT INTO trucks (number, fio, status, car) VALUES (@number, @fio, @status, @car)";
 
                 SQLiteCommand command = new SQLiteCommand(query, connection);
                 command.Parameters.AddWithValue("@number", trucks.Number);
